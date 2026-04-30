@@ -1,0 +1,100 @@
+@import "tailwindcss";
+
+@theme {
+  --color-accent: #FF6B4A;
+  --color-accent-hover: #e85a39;
+  --color-primary: #2B2D31;
+  --color-secondary: #5A6068;
+  --color-light-ui: #D8DADD;
+  --color-section-bg: #F7F7F5;
+
+  --font-family-space: var(--font-space), 'Space Grotesk', sans-serif;
+  --font-family-inter: var(--font-inter), 'Inter', sans-serif;
+  --font-family-mono: var(--font-mono), 'JetBrains Mono', monospace;
+
+  --shadow-card: 0 4px 24px rgba(0, 0, 0, 0.2);
+  --shadow-card-hover: 0 20px 40px rgba(0, 0, 0, 0.3);
+  --shadow-accent: 0 0 20px rgba(255, 107, 74, 0.15);
+}
+
+@layer base {
+  * {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+  }
+
+  html {
+    scroll-behavior: smooth;
+  }
+
+  body {
+    font-family: var(--font-inter), 'Inter', system-ui, sans-serif;
+    background-color: #2B2D31;
+    color: #D8DADD;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    font-family: var(--font-space), 'Space Grotesk', system-ui, sans-serif;
+  }
+
+  ::selection {
+    background-color: rgba(255, 107, 74, 0.3);
+    color: #D8DADD;
+  }
+
+  ::-webkit-scrollbar {
+    width: 6px;
+  }
+
+  ::-webkit-scrollbar-track {
+    background: #2B2D31;
+  }
+
+  ::-webkit-scrollbar-thumb {
+    background: #5A6068;
+    border-radius: 3px;
+  }
+
+  ::-webkit-scrollbar-thumb:hover {
+    background: #FF6B4A;
+  }
+}
+
+/* Font utility classes */
+.font-space {
+  font-family: var(--font-space), 'Space Grotesk', sans-serif;
+}
+
+.font-inter {
+  font-family: var(--font-inter), 'Inter', sans-serif;
+}
+
+.font-mono {
+  font-family: var(--font-mono), 'JetBrains Mono', monospace;
+}
+
+/* Gradient text */
+.gradient-text {
+  background: linear-gradient(135deg, #FF6B4A 0%, #ff9a7a 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+/* Card hover */
+.card-hover {
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.card-hover:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+}
+
+/* Accent glow */
+.accent-glow {
+  box-shadow: 0 0 20px rgba(255, 107, 74, 0.15);
+}
