@@ -149,10 +149,16 @@ export const experience = [
 
 export const education = [
   {
-    degree: 'Bachelor of Technology – Computer Science',
-    institution: 'ABES Institute of Technology, Ghaziabad',
-    duration: '2021 – 2025',
-    grade: 'CGPA: 7.8 / 10',
+    degree: 'Bachelor of Science',
+    institution: 'RMLAU University, Sultanpur',
+    duration: '2022 – 2025',
+    grade: '',
+  },
+  {
+    degree: 'Masters of Computer Applications',
+    institution: 'Galgotias University',
+    duration: '2025 – Present',
+    grade: '',
   },
 ];
 

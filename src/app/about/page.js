@@ -1,4 +1,5 @@
 'use client';
+import { useState } from 'react';
 
 import { motion } from 'framer-motion';
 import { personal, skills, education } from '@/data/portfolio';
@@ -121,6 +122,63 @@ const skillIcons = {
   'Vercel':      IconCloud,
   'Linux':       IconTerminal2,
 };
+
+// Original brand colors for skill icons
+const skillIconColors = {
+  'JavaScript':   '#F7DF1E',
+  'TypeScript':   '#3178C6',
+  'Python':       '#3776AB',
+  'Java':         '#ED8B00',
+  'C++':          '#00599C',
+  'SQL':          '#4479A1',
+  'React.js':     '#61DAFB',
+  'Next.js':      '#FFFFFF',
+  'HTML5':        '#E34F26',
+  'CSS3':         '#1572B6',
+  'Tailwind CSS': '#06B6D4',
+  'Redux':        '#764ABC',
+  'Framer Motion':'#BB4AE8',
+  'Node.js':      '#339933',
+  'Express.js':   '#AAAAAA',
+  'REST APIs':    '#FF6C37',
+  'GraphQL':      '#E10098',
+  'JWT Auth':     '#FB015B',
+  'Socket.io':    '#010101',
+  'MongoDB':      '#47A248',
+  'PostgreSQL':   '#4169E1',
+  'MySQL':        '#4479A1',
+  'Redis':        '#DC382D',
+  'Mongoose':     '#880000',
+  'Git':          '#F05032',
+  'GitHub':       '#FFFFFF',
+  'Docker':       '#2496ED',
+  'VS Code':      '#007ACC',
+  'Postman':      '#FF6C37',
+  'Figma':        '#F24E1E',
+  'Vercel':       '#FFFFFF',
+  'Linux':        '#FCC624',
+};
+
+// Skill chip with hover-activated original brand icon color
+function SkillChip({ skill, SkillIcon, iconColor }) {
+  const [hovered, setHovered] = useState(false);
+  return (
+    <span
+      onMouseEnter={() => setHovered(true)}
+      onMouseLeave={() => setHovered(false)}
+      className="inline-flex items-center gap-1.5 px-2.5 py-1.5 bg-white/5 border border-white/10 text-[#D8DADD]/80 text-xs font-mono rounded-lg hover:border-accent/40 hover:text-accent transition-all duration-200 cursor-default"
+    >
+      {SkillIcon && (
+        <SkillIcon
+          size={12}
+          stroke={1.8}
+          style={{ color: hovered && iconColor ? iconColor : undefined, transition: 'color 0.2s' }}
+        />
+      )}
+      {skill}
+    </span>
+  );
+}
 
 export default function AboutPage() {
   return (
@@ -255,14 +313,14 @@ export default function AboutPage() {
                   <div className="flex flex-wrap gap-2">
                     {items.map((skill) => {
                       const SkillIcon = skillIcons[skill];
+                      const iconColor = skillIconColors[skill];
                       return (
-                        <span
+                        <SkillChip
                           key={skill}
-                          className="inline-flex items-center gap-1.5 px-2.5 py-1.5 bg-white/5 border border-white/10 text-[#D8DADD]/80 text-xs font-mono rounded-lg hover:border-accent/40 hover:text-accent transition-all duration-200 cursor-default"
-                        >
-                          {SkillIcon && <SkillIcon size={12} stroke={1.8} />}
-                          {skill}
-                        </span>
+                          skill={skill}
+                          SkillIcon={SkillIcon}
+                          iconColor={iconColor}
+                        />
                       );
                     })}
                   </div>
@@ -305,7 +363,7 @@ export default function AboutPage() {
                   </div>
                 </div>
                 <div className="mt-4 md:mt-0 md:text-right pl-[60px] md:pl-0">
-                  <span className="text-accent font-mono text-sm font-medium">{edu.grade}</span>
+                  {edu.grade && <span className="text-accent font-mono text-sm font-medium">{edu.grade}</span>}
                   <p className="text-[#5A6068] text-xs mt-1">{edu.duration}</p>
                 </div>
               </motion.div>
