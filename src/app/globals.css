@@ -1,0 +1,220 @@
+@import "tailwindcss";
+
+/* ============================================
+   DESIGN TOKENS — Dark Mode (default)
+   ============================================ */
+:root,
+[data-theme="dark"] {
+  --color-bg-primary: #2B2D31;
+  --color-bg-secondary: #1e2023;
+  --color-bg-card: rgba(255, 255, 255, 0.03);
+  --color-bg-card-hover: rgba(255, 107, 74, 0.05);
+  --color-border: rgba(255, 255, 255, 0.08);
+  --color-border-hover: rgba(255, 107, 74, 0.3);
+  --color-text-primary: #D8DADD;
+  --color-text-secondary: #5A6068;
+  --color-text-muted: rgba(216, 218, 221, 0.6);
+  --color-accent: #FF6B4A;
+  --color-accent-hover: #e85a39;
+  --color-accent-subtle: rgba(255, 107, 74, 0.1);
+  --shadow-card: 0 4px 24px rgba(0, 0, 0, 0.2);
+  --shadow-card-hover: 0 20px 40px rgba(0, 0, 0, 0.3);
+  --shadow-accent: 0 0 24px rgba(255, 107, 74, 0.2);
+}
+
+/* ============================================
+   LIGHT MODE
+   ============================================ */
+[data-theme="light"] {
+  --color-bg-primary: #F7F6F3;
+  --color-bg-secondary: #EDECEA;
+  --color-bg-card: rgba(0, 0, 0, 0.03);
+  --color-bg-card-hover: rgba(255, 107, 74, 0.05);
+  --color-border: rgba(0, 0, 0, 0.08);
+  --color-border-hover: rgba(255, 107, 74, 0.4);
+  --color-text-primary: #1a1b1e;
+  --color-text-secondary: #6b7280;
+  --color-text-muted: rgba(26, 27, 30, 0.6);
+  --color-accent: #FF6B4A;
+  --color-accent-hover: #e85a39;
+  --color-accent-subtle: rgba(255, 107, 74, 0.1);
+  --shadow-card: 0 4px 24px rgba(0, 0, 0, 0.08);
+  --shadow-card-hover: 0 20px 40px rgba(0, 0, 0, 0.12);
+  --shadow-accent: 0 0 24px rgba(255, 107, 74, 0.2);
+}
+
+/* ============================================
+   TAILWIND THEME TOKENS
+   ============================================ */
+@theme {
+  --color-accent: #FF6B4A;
+  --color-accent-hover: #e85a39;
+  --color-primary: #2B2D31;
+  --color-secondary: #5A6068;
+  --color-light-ui: #D8DADD;
+  --color-section-bg: #F7F7F5;
+
+  --font-family-space: var(--font-space), 'Space Grotesk', sans-serif;
+  --font-family-inter: var(--font-inter), 'Inter', sans-serif;
+  --font-family-mono: var(--font-mono), 'JetBrains Mono', monospace;
+
+  --shadow-card: 0 4px 24px rgba(0, 0, 0, 0.2);
+  --shadow-card-hover: 0 20px 40px rgba(0, 0, 0, 0.3);
+  --shadow-accent: 0 0 20px rgba(255, 107, 74, 0.15);
+}
+
+/* ============================================
+   BASE STYLES
+   ============================================ */
+@layer base {
+  * {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+  }
+
+  html {
+    scroll-behavior: smooth;
+  }
+
+  body {
+    font-family: var(--font-inter), 'Inter', system-ui, sans-serif;
+    background-color: var(--color-bg-primary);
+    color: var(--color-text-primary);
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    transition: background-color 0.3s ease, color 0.3s ease;
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    font-family: var(--font-space), 'Space Grotesk', system-ui, sans-serif;
+  }
+
+  ::selection {
+    background-color: rgba(255, 107, 74, 0.3);
+    color: #D8DADD;
+  }
+
+  ::-webkit-scrollbar {
+    width: 6px;
+  }
+
+  ::-webkit-scrollbar-track {
+    background: var(--color-bg-primary);
+  }
+
+  ::-webkit-scrollbar-thumb {
+    background: var(--color-text-secondary);
+    border-radius: 3px;
+  }
+
+  ::-webkit-scrollbar-thumb:hover {
+    background: #FF6B4A;
+  }
+}
+
+/* ============================================
+   FONT UTILITIES
+   ============================================ */
+.font-space {
+  font-family: var(--font-space), 'Space Grotesk', sans-serif;
+}
+
+.font-inter {
+  font-family: var(--font-inter), 'Inter', sans-serif;
+}
+
+.font-mono {
+  font-family: var(--font-mono), 'JetBrains Mono', monospace;
+}
+
+/* ============================================
+   GRADIENT TEXT
+   ============================================ */
+.gradient-text {
+  background: linear-gradient(135deg, #FF6B4A 0%, #ff9a7a 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+/* ============================================
+   CARD HOVER
+   ============================================ */
+.card-hover {
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.card-hover:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+}
+
+/* ============================================
+   ACCENT GLOW
+   ============================================ */
+.accent-glow {
+  box-shadow: 0 0 20px rgba(255, 107, 74, 0.15);
+}
+
+/* ============================================
+   THEME-AWARE UTILITY CLASSES
+   ============================================ */
+.bg-surface {
+  background-color: var(--color-bg-primary);
+}
+
+.bg-surface-2 {
+  background-color: var(--color-bg-secondary);
+}
+
+.bg-card {
+  background-color: var(--color-bg-card);
+}
+
+.border-surface {
+  border-color: var(--color-border);
+}
+
+.text-primary {
+  color: var(--color-text-primary);
+}
+
+.text-secondary {
+  color: var(--color-text-secondary);
+}
+
+.text-muted {
+  color: var(--color-text-muted);
+}
+
+/* ============================================
+   TYPED TEXT CURSOR
+   ============================================ */
+.typed-cursor {
+  display: inline-block;
+  width: 3px;
+  height: 1em;
+  background-color: var(--color-accent);
+  margin-left: 2px;
+  animation: blink 1s step-end infinite;
+  vertical-align: text-bottom;
+  border-radius: 1px;
+}
+
+@keyframes blink {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0; }
+}
+
+/* ============================================
+   LIGHT MODE NAVBAR / CARD OVERRIDES
+   ============================================ */
+[data-theme="light"] .navbar-scrolled {
+  background-color: rgba(247, 246, 243, 0.95) !important;
+  border-bottom-color: rgba(0, 0, 0, 0.08) !important;
+}
+
+[data-theme="light"] .mobile-menu-bg {
+  background-color: rgba(247, 246, 243, 0.98) !important;
+}
