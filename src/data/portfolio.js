@@ -4,7 +4,7 @@ export const personal = {
   name: 'Manas Kasaudhan',
   title: 'Full-Stack Developer',
   subtitle: 'Problem Solver',
-  email: 'manaskasaudhan@gmail.com',
+  email: 'manaskasaudhan1808@gmail.com',
   github: 'https://github.com/manas-kasaudhan',
   linkedin: 'https://linkedin.com/in/manas-kasaudhan',
   leetcode: 'https://leetcode.com/u/ManasKasaudhan/',
